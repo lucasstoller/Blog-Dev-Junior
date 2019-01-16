@@ -1,1 +1,14 @@
-<%= @post.title %>
+<div class="">
+    <div>
+        <%= image_tag image_url('thumbnails/' + @post.thumbnail) %>
+    </div>
+    <div>
+        <h1 class="text-center">
+            <%= @post.title%>
+        </h1>
+        <p>
+            <%= @post.body%>
+        </p>
+    </div>
+    <div class="row"></div>
+</div>
