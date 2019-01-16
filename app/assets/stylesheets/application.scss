@@ -5,3 +5,12 @@
     height: auto;
     margin: 5px;
 }
+
+.card-thumbnail {
+    padding: 0;
+    overflow: hidden;
+    img {
+        width: 105%;
+        height: 100%;
+    }
+}
