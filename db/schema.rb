@@ -31,5 +31,5 @@ ActiveRecord::Schema.define(version: 20190115024002) do
   end
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id"
-
+  
 end

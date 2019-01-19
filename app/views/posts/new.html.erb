@@ -1,0 +1,23 @@
+<h1>Novo post</h1>
+<%= form_for @post do |f| %>
+  <div class="form-group">
+    <%= f.label :title, 'Titulo' %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Insira um title mec" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body, 'Texto'%>
+    <%= f.text_area :body, class: "form-control", rows: 15,  placeholder: "Aqui vai a sua arte!"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :thumbnail %>
+    <%= f.file_field :thumbnail, class:"form-control-file"  %>
+    <small>min. 1200x450px</small>
+  </div>
+  <div class="form-group">
+    <%= f.label :category, 'Categoria' %>
+    <%= f.select :category_id, @categories.collect {|c| [c.name, c.id] }, {prompt: 'Selecione a categoria'}, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Postar", class: "btn btn-success" %>
+  </div>
+<% end %>
