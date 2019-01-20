@@ -9,6 +9,19 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
-        @categories = Category.all
     end
+
+    def create
+        @post = Post.new(permitted_params)
+        if @post.save
+            redirect_to @post
+        else
+            render action: :new
+        end
+    end
+
+    private
+        def permitted_params
+            params.require(:post).permit(:title, :body, :thumbnail, :category)
+        end
 end
