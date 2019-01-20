@@ -48,7 +48,7 @@
                         <div class="row">
                             <% if index.even? %>
                                 <div class="col-sm-4 card-thumbnail">
-                                    <img class="" src="<%= image_url('thumbnails/'+post.thumbnail) %>" alt="Card image cap">                        
+                                    <%= image_tag post.thumbnail.url if post.thumbnail?%>
                                 </div>
                             <% end %>
                             <div class="card-body col-sm-8">
@@ -59,7 +59,7 @@
                             </div>
                             <% if !index.even? %>
                                 <div class="col-sm-4 card-thumbnail">
-                                    <img class="" src="<%= image_url('thumbnails/'+post.thumbnail) %>" alt="Card image cap">                        
+                                    <%= image_tag post.thumbnail.url if post.thumbnail?%>
                                 </div>
                             <% end %>
                         </div>

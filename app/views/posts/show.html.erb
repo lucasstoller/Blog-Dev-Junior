@@ -1,6 +1,6 @@
 <div class="">
     <div>
-        <%= image_tag image_url('thumbnails/' + @post.thumbnail) %>
+        <%= image_tag @post.thumbnail.url if @post.thumbnail? %>
     </div>
     <div>
         <h1 class="text-center">
