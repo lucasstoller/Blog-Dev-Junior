@@ -20,6 +20,25 @@ class PostsController < ApplicationController
         end
     end
 
+    def edit
+        @post = Post.find(params[:id])
+    end
+
+    def update
+        @post = Post.new(permitted_params)
+        if @post.save
+            redirect_to @post
+        else
+            render action: :edit
+        end
+    end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        redirect_to posts
+    end
+
     private
         def permitted_params
             params.require(:post).permit(:title, :body, :thumbnail, :category_id)

@@ -1,0 +1,55 @@
+<%= form_for @post do |f| %>
+  <% if @post.errors.messages[:title] %>
+    <% @post.errors.messages[:title].each do |error| %>
+      <ul class="alert alert-danger" role="alert">
+        <li class="ml-2"><%= error %></li>
+      </ul>
+    <% end %>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :title, 'Titulo' %>
+    <%= f.text_field :title, class: "form-control", placeholder: "Insira um title mec" %>
+  </div>
+
+  <% if @post.errors.messages[:body] %>
+    <% @post.errors.messages[:body].each do |error| %>
+      <ul class="alert alert-danger" role="alert">
+        <li class="ml-2"><%= error %></li>
+      </ul>
+    <% end %>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :body, 'Texto'%>
+    <%= f.text_area :body, class: "form-control", rows: 15,  placeholder: "Aqui vai a sua arte!"  %>
+  </div>
+
+  <% if @post.errors.messages[:thumbnail] %>
+    <% @post.errors.messages[:thumbnail].each do |error| %>
+      <ul class="alert alert-danger" role="alert">
+        <li class="ml-2"><%= error %></li>
+      </ul>
+    <% end %>
+  <% end %> 
+  <div class="form-group">
+    <%= f.label :thumbnail %>
+    <%= f.file_field :thumbnail, class:"form-control-file"  %>
+    <small>min. 1200x450px</small>
+  </div>
+
+  <% if @post.errors.messages[:category] %>
+    <% @post.errors.messages[:category].each do |error| %>
+      <ul class="alert alert-danger" role="alert">
+        <li class="ml-2"><%= error %></li>
+      </ul>
+    <% end %>  
+  <% end %> 
+  <div class="form-group">
+    <%= f.label :category, 'Categoria' %>
+    <%= f.select :category_id, Category::all.collect {|c| [c.name, c.id] }, {prompt: 'Selecione a categoria'}, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Postar", class: "btn btn-success" %>
+    <%= link_to "Cancelar", root_path, class: "btn btn-danger" %>
+  </div>
+<% end %>
